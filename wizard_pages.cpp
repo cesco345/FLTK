@@ -13,9 +13,8 @@
 Fl_Window *G_win = 0;
 Fl_Wizard *G_wiz = 0;
 Fl_Box *mypicturebox;
-Fl_JPEG_Image *startimg;
-Fl_JPEG_Image *spiderimg;
-Fl_JPEG_Image *dogimg;
+Fl_JPEG_Image *last_img;
+
 
 
 
@@ -31,9 +30,7 @@ int main(int argc, char **argv) {
 
 
     // Load some images to use later
-    startimg = new Fl_JPEG_Image("lena.jpg");
-    spiderimg = new Fl_JPEG_Image("0001.jpg");
-    dogimg = new Fl_JPEG_Image("0045.jpg");
+    last_img = new Fl_JPEG_Image("lena.jpg");
 
 
 
@@ -67,7 +64,7 @@ int main(int argc, char **argv) {
         out->labelsize(20);
         out->align(FL_ALIGN_TOP|FL_ALIGN_LEFT);
         mypicturebox = new Fl_Box(200,200,200,150);
-        mypicturebox->image(startimg);
+        mypicturebox->image(last_img);
         out->value("This is the Last page");
         g->end();
     }
