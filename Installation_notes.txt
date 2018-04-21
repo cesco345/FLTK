@@ -1,0 +1,17 @@
+
+
+wget http://fltk.org/pub/fltk/1.3.4/fltk-1.3.4-2-source.tar.gz
+tar -zxvf fltk-1.3.4-2-source.tar.gz
+./configure
+make
+sudo make install
+sudo ldconfig
+
+
+make sure that the fltk can be called from anywhere in your file
+
+
+
+
+mogrify -format jpg *.bmp
+ffmpeg -i file.mpg -r 1/1 $filename%03d.jpg
