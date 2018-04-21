@@ -13,5 +13,19 @@ make sure that the fltk can be called from anywhere in your file
 
 
 
-mogrify -format jpg *.bmp
+
+sudo apt-get install smplayer
+scp file.txt username@to_host:/remote/directory/
+
+##if you want to get ffmpeg and download it from source, this is what you do
+wget https://ffmpeg.org/releases/ffmpeg-4.0.tar.bz2
+tar -vxjf ffmpeg-4.0.tar.bz2
+cd ffmpeg-4.0.
+./configure
+make
+sudo make install
+sudo ldconfig
 ffmpeg -i file.mpg -r 1/1 $filename%03d.jpg
+
+
+mogrify -format jpg *.bmp
