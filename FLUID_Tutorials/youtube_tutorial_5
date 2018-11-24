@@ -1,0 +1,68 @@
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Button.H>
+#include <FL/Fl_Box.H>
+#include <FL/Fl_JPEG_Image.H>
+
+// Main Window for the GUI objects
+Fl_Window *win_app;
+
+// Buttons for images
+Fl_Button *lena_button;
+Fl_Button *baboon_button;
+Fl_Button *fruits_button;
+
+Fl_Box *mypicturebox;
+Fl_JPEG_Image *placeholder;
+Fl_JPEG_Image *lena_img;
+Fl_JPEG_Image *baboon_img;
+Fl_JPEG_Image *fruits_img;
+
+// Callback function
+void mybutton_cb(Fl_Widget * w, long int data)
+{
+    if (data == 8) {
+        mypicturebox->image(lena_img);
+        mypicturebox->redraw();
+    }
+    if (data == 4) {
+        mypicturebox->image(baboon_img);
+        mypicturebox->redraw();
+    }
+    if (data == 2) {
+        mypicturebox->image(fruits_img);
+        mypicturebox->redraw();
+    }
+}
+int main()
+{
+
+    // The main window
+    win_app = new Fl_Window(800, 620, "FLTK image demo");
+
+    // Three buttons, sharing one callback
+    lena_button = new Fl_Button(650, 200, 60, 20, "Lena");
+    baboon_button = new Fl_Button(650, 350, 60, 20, "Baboon");
+    fruits_button = new Fl_Button(650, 500, 60, 20, "Fruits");
+
+    lena_button->callback(mybutton_cb, 8);
+    baboon_button->callback(mybutton_cb, 4);
+    fruits_button->callback(mybutton_cb, 2);
+
+    // Load the images to view later
+    placeholder = new Fl_JPEG_Image("debian.jpg");
+    lena_img = new Fl_JPEG_Image("lena.jpg");
+    baboon_img = new Fl_JPEG_Image("baboon.jpg");
+    fruits_img = new Fl_JPEG_Image("fruits.jpg");
+
+    // A box for the image
+    mypicturebox = new Fl_Box(100, 100, 500, 500);
+
+    // Give it some initial contents
+    mypicturebox->image(placeholder);
+
+    // Make the window visible and start processing events
+    win_app->end();
+    win_app->show();
+    return Fl::run();
+}
