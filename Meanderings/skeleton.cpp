@@ -1,3 +1,4 @@
+// From his CPP course http://epweb2.ph.bham.ac.uk/user/hillier/course3cpp/fltkegs/
 // Skeleton FLTK program
 
 #include <FL/Fl.H>
