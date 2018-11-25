@@ -1,3 +1,5 @@
+  GNU nano 2.7.4                                                                                                                       File: three_buttons.cpp                                                                                                                                 
+
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Button.H>
@@ -11,27 +13,66 @@ Fl_Window *win_app;
 Fl_Button *lena_button;
 Fl_Button *baboon_button;
 Fl_Button *fruits_button;
+Fl_Button *building_button; 
+Fl_Button *pcb_board_button; 
+Fl_Button *butterfly_button; 
+Fl_Button *cali_button; 
+Fl_Button *cesco_button;
+Fl_Button *monkey_button;
 
-Fl_Box *mypicturebox;
+Fl_Box *image_box;
 Fl_JPEG_Image *placeholder;
 Fl_JPEG_Image *lena_img;
 Fl_JPEG_Image *baboon_img;
 Fl_JPEG_Image *fruits_img;
+Fl_JPEG_Image *building_img;
+Fl_JPEG_Image *board_img;
+Fl_JPEG_Image *butterfly_img;
+Fl_JPEG_Image *cali_img;
+Fl_JPEG_Image *cesco_img;
+Fl_JPEG_Image *cali2_img;
 
 // Callback function
 void mybutton_cb(Fl_Widget * w, long int data)
 {
-    if (data == 8) {
-        mypicturebox->image(lena_img);
-        mypicturebox->redraw();
+    if (data == 9) {
+        image_box->image(lena_img);
+        image_box->redraw();
     }
+    if (data == 8) {
+        image_box->image(baboon_img);
+        image_box->redraw();
+    }
+    if (data == 7) {
+        image_box->image(fruits_img);
+        image_box->redraw();
+    }
+
+    if (data == 6) {
+        image_box->image(building_img);
+        image_box->redraw();
+    }
+    if (data == 5) {
+        image_box->image(board_img);
+        image_box->redraw();
+    }
+    
     if (data == 4) {
-        mypicturebox->image(baboon_img);
-        mypicturebox->redraw();
+        image_box->image(butterfly_img);
+        image_box->redraw();
+    }
+
+    if (data == 3) {
+        image_box->image(cali_img);
+        image_box->redraw();
     }
     if (data == 2) {
-        mypicturebox->image(fruits_img);
-        mypicturebox->redraw();
+        image_box->image(cesco_img);
+        image_box->redraw();
+    }
+    if (data == 1) {
+        image_box->image(cali2_img);
+        image_box->redraw();
     }
 }
 int main()
@@ -41,28 +82,49 @@ int main()
     win_app = new Fl_Window(800, 620, "FLTK image demo");
 
     // Three buttons, sharing one callback
-    lena_button = new Fl_Button(650, 200, 60, 20, "Lena");
-    baboon_button = new Fl_Button(650, 350, 60, 20, "Baboon");
-    fruits_button = new Fl_Button(650, 500, 60, 20, "Fruits");
+    lena_button = new Fl_Button(650, 150, 80, 20, "Lena");
+    baboon_button = new Fl_Button(650, 200, 80, 20, "Baboon");
+    fruits_button = new Fl_Button(650, 250, 80, 20, "Fruits");
+    building_button = new Fl_Button(650, 300, 80, 20, "Building");
+    pcb_board_button = new Fl_Button(650, 350, 80, 20, "PCB Board");
+    butterfly_button = new Fl_Button(650, 400, 80, 20, "Butterfly");
+    cali_button = new Fl_Button(650, 450, 80, 20, "Cali");
+    cesco_button = new Fl_Button(650, 500, 80, 20, "Cesco");
+    monkey_button = new Fl_Button(650, 550, 80, 20, "Monkey");
 
-    lena_button->callback(mybutton_cb, 8);
-    baboon_button->callback(mybutton_cb, 4);
-    fruits_button->callback(mybutton_cb, 2);
+    lena_button->callback(mybutton_cb, 9);
+    baboon_button->callback(mybutton_cb, 8);
+    fruits_button->callback(mybutton_cb, 7);
+    building_button->callback(mybutton_cb, 6);
+    pcb_board_button->callback(mybutton_cb, 5);
+    butterfly_button->callback(mybutton_cb, 4);
+    cali_button->callback(mybutton_cb, 3);
+    cesco_button->callback(mybutton_cb, 2);
+    monkey_button->callback(mybutton_cb, 1);
 
     // Load the images to view later
     placeholder = new Fl_JPEG_Image("debian.jpg");
     lena_img = new Fl_JPEG_Image("lena.jpg");
     baboon_img = new Fl_JPEG_Image("baboon.jpg");
     fruits_img = new Fl_JPEG_Image("fruits.jpg");
+    building_img = new Fl_JPEG_Image("building.jpg");
+    board_img = new Fl_JPEG_Image("board.jpg");
+    butterfly_img = new Fl_JPEG_Image("butterfly.jpg");
+    cali_img = new Fl_JPEG_Image("cali.jpg");
+    cesco_img  = new Fl_JPEG_Image("cesco.jpeg");
+    cali2_img = new Fl_JPEG_Image("cali2.jpg");
 
     // A box for the image
-    mypicturebox = new Fl_Box(100, 100, 500, 500);
+    image_box = new Fl_Box(100, 100, 500, 500);
 
     // Give it some initial contents
-    mypicturebox->image(placeholder);
+    image_box->image(placeholder);
 
     // Make the window visible and start processing events
     win_app->end();
     win_app->show();
     return Fl::run();
 }
+
+
+
